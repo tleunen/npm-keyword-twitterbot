@@ -1,0 +1,32 @@
+{
+  "name": "npm-keyword-twitterbot",
+  "version": "0.0.1",
+  "description": "Tweet new and updated NPM packages based on a keyword on twitter",
+  "main": "src/app.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tleunen/npm-keyword-twitterbot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tleunen/npm-keyword-twitterbot/issues"
+  },
+  "homepage": "https://github.com/tleunen/npm-keyword-twitterbot",
+  "keywords": [
+    "twitter",
+    "tweet",
+    "npm",
+    "bot",
+    "keyword"
+  ],
+  "author": "Tommy Leunen <tommy.leunen@gmail.com> (http://tommyleunen.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "JSONStream": "^0.9.0",
+    "event-stream": "^3.1.7",
+    "fs": "0.0.2",
+    "querystring": "^0.2.0",
+    "request": "^2.46.0",
+    "semver": "^4.1.0",
+    "twit": "^1.1.18"
+  }
+}
