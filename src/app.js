@@ -39,9 +39,9 @@ T.get('help/configuration',  function (err, data, response) {
 
         updatedModules.forEach(function (module) {
             // send tweet
-            //T.post('statuses/update', { status: getTweetMessage(module, twitterMaxUrlLength) }, function (err, data, response) {
-            //    if(err) throw 'Error Twit: ', err;
-            //});
+            T.post('statuses/update', { status: getTweetMessage(module, twitterMaxUrlLength) }, function (err, data, response) {
+               if(err) throw 'Error Twit: ', err;
+            });
         });
 
 
@@ -59,23 +59,23 @@ T.get('help/configuration',  function (err, data, response) {
 
 
 function getTweetMessage(module, maxUrlLength) {
-    var url = npm.getPackageUrl(module.name);
-
     var content = [
         module.name,
         '(' + module.latestVersion + ')',
         '',
-        url,
+        '',
         Config.TWEET_HASHTAG
     ];
 
     var lnAvailable = content.reduce(function(prev, curr) {
         return prev - curr.length;
-    }, 140);
+    }, 140 - maxUrlLength);
 
+    // put back the description and url
     content[2] = (module.description > lnAvailable)
         ? module.description.substring(0, ln-3) + '...'
         : module.description;
+    content[3] = npm.getPackageUrl(module.name);
 
     return content.join(' ');
 }
