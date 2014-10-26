@@ -1,6 +1,6 @@
 {
   "name": "npm-keyword-twitterbot",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Tweet new and updated NPM packages based on a keyword on twitter",
   "main": "src/app.js",
   "repository": {
