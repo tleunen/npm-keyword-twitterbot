@@ -41,5 +41,9 @@ module.exports = {
 
                 callback(modules);
             }));
+    },
+
+    getPackageUrl: function(packageName) {
+        return 'https://www.npmjs.org/package/' + packageName;
     }
 };
