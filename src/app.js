@@ -69,13 +69,13 @@ function getTweetMessage(module, maxUrlLength) {
 
     var lnAvailable = content.reduce(function(prev, curr) {
         return prev - curr.length;
-    }, 140 - maxUrlLength);
+    }, 140 - maxUrlLength - (content.length - 1) );
 
     // put back the description and url
-    content[2] = (module.description > lnAvailable)
-        ? module.description.substring(0, ln-3) + '...'
+    content[2] = npm.getPackageUrl(module.name);
+    content[3] = (module.description.length > lnAvailable)
+        ? module.description.substring(0, lnAvailable-3) + '...'
         : module.description;
-    content[3] = npm.getPackageUrl(module.name);
 
     return content.join(' ');
 }
