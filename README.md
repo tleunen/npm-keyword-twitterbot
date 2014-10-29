@@ -2,17 +2,39 @@
 
 [![NPM](https://nodei.co/npm/npm-keyword-twitterbot.png)](https://nodei.co/npm/npm-keyword-twitterbot/)
 
-This node script allows you to automatically tweet new NPM packages based on a keyword.
+This library allows you to automatically tweet new NPM modules based on keywords.
+
+## Usage
+
+```
+var NPMTwitterBot = require('npm-keyword-twitterbot');
+
+new NPMTwitterBot({
+    cache_filepath: __dirname + '/cache_modules.json',
+
+    consumer_key: 'consumer_key',
+    consumer_secret: 'consumer_secret',
+    access_token: 'access_token',
+    access_token_secret: 'access_token_secret',
+
+    npm_keyword: [
+        'keyword1',
+        'keyword2'
+    ],
+
+    tweet_hashtags: "#MyhashTag"
+});
+```
 
 ## Example
 
-The twitter bot [ReactJSComp](https://twitter.com/ReactJSComp), based on the keyword `react-component`, tweets new and updated modules related to React Components.
+The twitter bot [ReactJSnpm](https://twitter.com/ReactJSnpm), based on the keyword `react` and `react-component`, tweets new and updated ReactJS modules.
 
 ## How to use
 
 * Create a Twitter app for your bot: https://apps.twitter.com/
-* Update `src/config.js` with your Twitter info and your npm info
-* Add a crontab to start the script `node src/app.js`
+* Create a bot like the one in the `usage` section.
+* Add a cron job to start your bot. The cron job should run the script at least every 30 minutes.
 
 ## License
 
