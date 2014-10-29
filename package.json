@@ -1,7 +1,7 @@
 {
   "name": "npm-keyword-twitterbot",
   "version": "1.1.1",
-  "description": "Get new and updated NPM packages based on a keyword, and tweet them on Twitter",
+  "description": "Tweet updated NPM modules based on keywords",
   "main": "src/index.js",
   "repository": {
     "type": "git",
@@ -21,7 +21,11 @@
     "module",
     "package"
   ],
-  "author": "Tommy Leunen <tommy.leunen@gmail.com> (http://tommyleunen.com/)",
+  "author": {
+    "name": "Tommy Leunen",
+    "email" : "tommy.leunen@gmail.com",
+    "url" : "http://tommyleunen.com/"
+  },
   "license": "MIT",
   "dependencies": {
     "fs": "0.0.2",
