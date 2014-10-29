@@ -1,6 +1,6 @@
 {
   "name": "npm-keyword-twitterbot",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "Tweet updated NPM modules based on keywords",
   "main": "src/index.js",
   "repository": {
@@ -23,8 +23,8 @@
   ],
   "author": {
     "name": "Tommy Leunen",
-    "email" : "tommy.leunen@gmail.com",
-    "url" : "http://tommyleunen.com/"
+    "email": "tommy.leunen@gmail.com",
+    "url": "http://tommyleunen.com/"
   },
   "license": "MIT",
   "dependencies": {
