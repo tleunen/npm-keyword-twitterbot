@@ -36,16 +36,18 @@ module.exports = function(options) {
 
         console.log('updated modules: ' + updatedModules.length);
 
-        // tweet
-        npmTwit.tweetModules(updatedModules);
+        if(updatedModules.length > 0) {
+            // tweet
+            npmTwit.tweetModules(updatedModules);
 
-        // add the updated modules to the cache
-        cacheObject = updatedModules.reduce(function (cache, module) {
-            cache[module.name] = module.version;
-            return cache;
-        }, cacheObject);
+            // add the updated modules to the cache
+            cacheObject = updatedModules.reduce(function (cache, module) {
+                cache[module.name] = module.version;
+                return cache;
+            }, cacheObject);
 
-        // save cache
-        fs.writeFileSync(cacheFilePath, JSON.stringify(cacheObject), 'utf8');
+            // save cache
+            fs.writeFileSync(cacheFilePath, JSON.stringify(cacheObject), 'utf8');
+        }
     });
 };
