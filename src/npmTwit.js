@@ -12,6 +12,7 @@ function NPMTwit(opts) {
 
     this.tweetHashTags = opts.tweet_hashtags;
     this.tweetUrlLength = -1;
+    this.useHomepageUrl = opts.use_homepage_url;
 }
 
 NPMTwit.prototype.tweetModules = function(modules) {
@@ -44,7 +45,7 @@ NPMTwit.prototype._getTweetMessage = function(module) {
     }, 140 - this.tweetUrlLength - (content.length - 1) );
 
     // put back the description and url
-    content[2] = module.npmUrl;
+    content[2] = (this.useHomepageUrl ? module.homepage : module.npmUrl) || module.npmUrl;
     content[3] = (module.description.length > lnAvailable)
         ? module.description.substring(0, lnAvailable-3) + '...'
         : module.description;

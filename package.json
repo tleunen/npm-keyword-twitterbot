@@ -29,6 +29,7 @@
   "license": "MIT",
   "dependencies": {
     "fs": "0.0.2",
+    "lodash.defaults": "^2.4.1",
     "request": "^2.46.0",
     "semver": "^4.1.0",
     "twit": "^1.1.18"

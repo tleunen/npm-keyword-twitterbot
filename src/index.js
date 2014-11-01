@@ -4,6 +4,7 @@ var npm = require('./npm');
 var NPMTwit = require('./npmTwit');
 var semver = require('semver');
 var fs = require('fs');
+var defaults = require('lodash.defaults');
 
 function getCacheObject(filepath) {
     if(fs.existsSync(filepath)) {
@@ -13,6 +14,15 @@ function getCacheObject(filepath) {
 }
 
 module.exports = function(options) {
+    options = defaults(options, {
+        consumer_key: '',
+        consumer_secret: '',
+        access_token: '',
+        access_token_secret: '',
+        tweet_hashtags: '',
+        use_homepage_url: false
+    });
+
     var cacheFilePath = options.cache_filepath || __dirname + '/cache_modules.json';
     var cacheObject = getCacheObject(cacheFilePath);
 
@@ -21,7 +31,8 @@ module.exports = function(options) {
         consumer_secret:      options.consumer_secret,
         access_token:         options.access_token,
         access_token_secret:  options.access_token_secret,
-        tweet_hashtags:       options.tweet_hashtags
+        tweet_hashtags:       options.tweet_hashtags,
+        use_homepage_url:     options.use_homepage_url
     });
 
     npm.getModules(options.npm_keyword, function (npmModules) {

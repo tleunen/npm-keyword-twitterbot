@@ -22,6 +22,8 @@ new NPMTwitterBot({
         'keyword2'
     ],
 
+    use_homepage_url: false, /* use homepage url set in package.json instead of npm url? */
+
     tweet_hashtags: "#MyhashTag"
 });
 ```
