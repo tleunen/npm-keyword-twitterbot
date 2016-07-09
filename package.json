@@ -1,6 +1,6 @@
 {
   "name": "npm-keyword-twitterbot",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "Tweet updated NPM modules based on keywords",
   "main": "lib/index.js",
   "engines": {
