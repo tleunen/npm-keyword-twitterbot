@@ -1,39 +1,23 @@
-'use strict';
-
-var request = require('request');
+const got = require('got');
 
 module.exports = {
-    getModules: function(keywords, callback) {
-        if(!Array.isArray(keywords)) {
-            keywords = [keywords];
-        }
+    getModules: kw => {
+        const keywords = Array.isArray(kw) ? kw : [kw];
+        const url = `https://registry.npmjs.org/-/all/since?stale=update_after&startkey=${Date.now() - 1800000}`;
 
-        var requestUrl = 'https://registry.npmjs.org/-/all/since?stale=update_after&startkey=' + ( Date.now() - 1800000);
-        request({url: requestUrl, json: true}, function(err, resp, body) {
-
-            var modules = Object.keys(body)
-            // remove _updated key & unwanted modules based on keywords
-            .filter(function(key) {
-                var moduleKeywords = body[key]['keywords'] || [];
-
-                var keywordsIntersect = keywords.filter(function(k) {
-                    return moduleKeywords.indexOf(k) != -1;
-                });
-
-                return key != '_updated' && keywordsIntersect.length > 0;
-            })
-            // get module content
-            .map(function(key) {
-                return {
-                    name: body[key]['name'],
-                    description: body[key]['description'],
-                    version: body[key]['dist-tags']['latest'],
-                    homepage: body[key]['homepage'],
-                    npmUrl: 'https://www.npmjs.org/package/' + body[key]['name']
-                };
-            });
-
-            callback(modules);
-        });
+        return got(url, { json: true })
+        .then(({ body }) =>
+            body.filter(mod => {
+                const modKeywords = mod.keywords || [];
+                const kwIntersect = keywords.filter(k => modKeywords.includes(k));
+                return kwIntersect.length > 0;
+            }).map(mod => ({
+                name: mod.name,
+                description: mod.description,
+                version: mod['dist-tags'].latest,
+                homepage: mod.homepage,
+                npmUrl: `https://www.npmjs.org/package/${mod.name}`
+            }))
+        );
     }
 };
