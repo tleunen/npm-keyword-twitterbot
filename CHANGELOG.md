@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.0.1"></a>
+## [3.0.1](https://github.com/tleunen/npm-keyword-twitterbot/compare/v3.0.0...v3.0.1) (2016-07-09)
+
+
+### Bug Fixes
+
+* Remove logs and return results in promise ([57b076b](https://github.com/tleunen/npm-keyword-twitterbot/commit/57b076b))
+
+
+
 <a name="3.0.0"></a>
 # [3.0.0](https://github.com/tleunen/npm-keyword-twitterbot/compare/v2.1.0...v3.0.0) (2016-07-09)
 
