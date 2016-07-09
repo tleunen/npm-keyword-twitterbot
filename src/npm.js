@@ -9,7 +9,7 @@ module.exports = {
         .then(({ body }) =>
             body.filter(mod => {
                 const modKeywords = mod.keywords || [];
-                const kwIntersect = keywords.filter(k => modKeywords.includes(k));
+                const kwIntersect = keywords.filter(k => modKeywords.indexOf(k) >= 0);
                 return kwIntersect.length > 0;
             }).map(mod => ({
                 name: mod.name,
