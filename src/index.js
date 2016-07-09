@@ -88,15 +88,11 @@ module.exports = opts => {
 
         return npm.getModules(options.npm_keyword)
         .then(npmModules => {
-            console.log(`modules: ${npmModules.length}`);
-
             // retrieve only newer version of modules
             const updatedModules = npmModules.filter(mod =>
                 !({}.hasOwnProperty.call(cacheObject, mod.name)) ||
                 semver.gt(mod.version, cacheObject[mod.name])
             );
-
-            console.log(`updated modules: ${updatedModules.length}`);
 
             if (updatedModules.length > 0) {
                 // tweet
@@ -108,10 +104,17 @@ module.exports = opts => {
                     return cache;
                 }, cacheObject);
 
-                return saveCacheObject(newCacheObj, options, s3);
+                return saveCacheObject(newCacheObj, options, s3)
+                .then(() => ({
+                    modules: npmModules,
+                    updatedModules
+                }));
             }
-            return Promise.resolve();
+
+            return Promise.resolve({
+                modules: npmModules,
+                updatedModules
+            });
         });
-    })
-    .catch(err => console.error(err));
+    });
 };
