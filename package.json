@@ -28,6 +28,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "aws-sdk": "^2.4.6",
     "got": "^6.3.0",
     "lodash.defaults": "^4.0.1",
     "semver": "^5.2.0",
